@@ -18,10 +18,11 @@
  */
 
 /**
+ * Perform AJAX requests with preferred API.
  * 
- * @param {AJAXRequest} req
- * @param {AJAXCompleteCallback} onSuccess 
- * @param {AJAXCompleteCallback | undefined} onError 
+ * @param {AJAXRequest} req Request property for this AJAX.
+ * @param {AJAXCompleteCallback} onSuccess Callback when this {@link req} was made.
+ * @param {AJAXCompleteCallback | undefined} onError Optional callback when this {@link req} cannot be made. If this omitted, it simply throw an {@link Error}.
  */
 function doAJAX(req, onSuccess, onError) {
     if (window.fetch) {
@@ -114,7 +115,12 @@ function doAJAX(req, onSuccess, onError) {
                 });
             }
 
-            xhr.send();
+            var sendBody = null;
+            if (typeof req.body !== undefined) {
+                sendBody = req.body;
+            }
+
+            xhr.send(sendBody);
         }
     } else {
         throw new Error("No AJAX API available in this browser");
