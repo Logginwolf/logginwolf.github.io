@@ -1,2 +1,5 @@
+User-agrnt: ia_archiver
+Disallow:
+
 User-agent: *
 Disallow: /docs/examples/
