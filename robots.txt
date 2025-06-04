@@ -1,4 +1,4 @@
-User-agrnt: ia_archiver
+User-agent: ia_archiver
 Disallow:
 
 User-agent: *
